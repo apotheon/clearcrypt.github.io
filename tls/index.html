@@ -232,8 +232,10 @@
           Some work on encrypting TCP sessions directly is being developed by the
           <a href="http://tcpcrypt.org/">Tcpcrypt</a> group, however they're developing tools for
           <i>opportunistic encryption</i> which is not resilient to Man-in-the-Middle (MitM) attacks.
-          A proper TCP replacement should make effors to ensure that you have the right key for
-          the person or site that you intend to be talking to.
+          This means that Tcpcrypt is not a proper TLS replacement, because a TLS replacement should
+          make effors to ensure that you have the right key for the person or site that you intend to
+          be talking to. While I applaud the efforts of Tcpcrypt, it's orthogonal to the TLS
+          replacement the world needs for secure encryption of sessions.
         </p>
         <p>
           <h2>Can we build a better CurveCP?</h2>
