@@ -145,8 +145,8 @@
         <p>
           <ul>
             <li>
-              <b>Lack of memory safety:</b> the remote code execution bugs prevalent throughout TLS stacks
-              and the recent Heartbleed bugs
+              <b>Lack of memory safety:</b> cause the remote code execution bugs prevalent throughout TLS
+              stacks and the recent Heartbleed bugs
             </li>
             <li>
               <b>Confusing conventions:</b> when language conventions like returning 0 or -1 vs 1 or 0 to
@@ -159,6 +159,20 @@
             </li>
           </ul>
         </p>
+        <p>
+          We can note similar problems with the X.509 certificate format, which was was designed without
+          a proper understanding of the
+          <a href="http://www.cs.dartmouth.edu/~sergey/langsec/">
+            security applications of formal language theory
+          </a>
+          making the format difficult to work with:
+        </p>
+        <p class="callout">
+          <a href="http://langsec.org/occupy/">
+            <img src="/img/weirdmachines.jpg">
+          </a>
+        </p>
+        </p>      
       </div>
     </div>
   </body>
