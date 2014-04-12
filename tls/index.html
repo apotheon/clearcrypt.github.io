@@ -188,7 +188,56 @@
           Last, but not least, we might bring up the fact that "Transport Layer Encryption" doesn't
           work on the OSI transport layer (layer 4), but in fact works on the session layer (layer 5)
           and presentation layer (layer 6). Despite the fact SSL was renamed to TLS, when they did
-          the renaming they even got that wrong. TLS is <i>wrong at every level</i>
+          the renaming they even got that wrong. TLS is <i>wrong at every level</i>.
+        </p>
+      </div>
+      <div class="container">
+        <h2>Sketches of a Better Future</h2>
+        <p>
+          Designing a new transport encryption protocol from scratch is an absurdly difficult undertaking.
+          It's possibly the hardest type of cryptographic protocol to design, and many attempts by amateurs
+          to design such a protocol immediately fall victim to a number of attacks, like replay attacks,
+          timing attacks, and various other information oracles like padding oracles. 
+        </p>
+        <p>
+          Let's say we want to throw the baby out with the bathwater in regard to TLS, but don't want to
+          start completely from scratch when designing a next generation transport encryption protocol.
+          Where should we look?
+        </p>
+        <p>
+          <a href="http://curvecp.org/">CurveCP</a>, designed by Daniel J. Bernstein (djb), provides a glimpse
+          into the future of transport protocols, as does the more recent
+          <a href="http://cr.yp.to/tcpip/minimalt-20130522.pdf">MinimaLT</a>. These protocols provide encrypted
+          transport atop the UDP protocol, in hopes of defeating <a href="http://curvecp.org/availability.html">
+          attacks on TCP's availability, by using things like RST packets.
+        </p>
+        <p>
+          Unfortunately, the modern Internet does not look favorably upon UDP.
+          <a href="http://www.delaat.net/rp/2010-2011/p48/report.pdf">
+            Preliminary benchmarks of CurveCP showed nearly complete packet loss in the face of TCP congestion
+          </a>
+          which is arguably a problem with
+          <a href="http://curvecp.org/decongestion.html">
+            CurveCP's decongestion algorithm
+          </a>
+          but much more likely an intractable problem with trying to do bulk transfers with UDP.
+          While djb has his heart in the right place, his vision of a DoS-proof UDP-based transport
+          encryption protocol probably isn't a particularly practical one on the modern Internet.
+          It's our argument that a TLS replacement should likely be a TCP session encryption
+          protocol much like TLS itself.
+        </p>
+        <p>
+          Some work on encrypting TCP sessions directly is being developed by the
+          <a href="http://tcpcrypt.org/">Tcpcrypt</a> group, however they're developing tools for
+          <i>opportunistic encryption</i> which is not resilient to Man-in-the-Middle (MitM) attacks.
+          A proper TCP replacement should make effors to ensure that you have the right key for
+          the person or site that you intend to be talking to.
+        </p>
+        <p class="callout">
+          <img src="/img/curvecp.png">
+        </p>
+        <p>
+          <h2>Can we build a better CurveCP?</h2>
         </p>
       </div>
     </div>
