@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nuke TLS From Orbit</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>TLS: The Nuclear Option</h1>
+        <p class="lead">
+          Transport Layer Security (TLS), previously known as the Secure
+          Sockets Layer (SSL), has been the de-facto solution for transport
+          encryption on the Internet for quite some time. Is it time for a
+          change?
+        </p>
+        <img src="/img/ripley.jpg">
+      </div>
+      <div class="container">
+        <h2>Is Change Possible?</h2>
+        <p>
+          TLS has succeeded in becoming the universal transport encryption
+          protocol universally supported across multiple different operating
+          systems, language environments, and programs throughout the Internet.
+        </p>
+        <p>
+          If TLS has been such a success, why should we change? Is there a real,
+          legitimate need to start over from scratch, re-evaluate our principles,
+          and come up with a better plan in every regard to the protocol's design,
+          or should we try to fix TLS instead, identifying problems in the
+          protocol's design, attempting to fix them, and publishing new versions
+          of TLS with the changes?
+        </p>
+        <p>
+          If we're starting over, where do we stop? Is TLS flawed as a protocol?
+          What about X.509 certificates? Do those need to be replaced to?
+          Do we need ASN.1 to die in a fire? Should we try to start over fresh and
+          <a href="https://www.usenix.org/system/files/1403_02-08_mickens.pdf">
+            wash it all away?
+          </a>
+        </p>
+        <p>
+          We ask you to, for a brief moment, suspend any disbelief that TLS is
+          irreplacable and try to imagine a future where everyone's TCP sessions
+          are encrypted with a protocol better than TLS which uses a certificate
+          format better than X.509, a format that's simple, human readable, and
+          describable via a context-free grammar. We know we're talking ponies
+          and unicorns here, but is that really so bad?
+        </p>
+      </div>
+      <div class="container">
+        <h2>The Status Quo</h2>
+        Transport Layer Security is presently the foremost method of encryption used
+        on the Internet today, with multiple different implementations by different
+        vendors:
+        <p>
+          <ul>
+            <li>
+              <b>OpenSSL:</b> The most popular TLS implementation, maintained by
+              Google security boffins Ben Laurie and Adam Langley who are doing
+              some pretty top notch work salvaging it. Widely regarded by the security
+              community as an enormous steaming pile of poo with a byzantine API
+              and surrealist implementation. Just got popped by
+              <a href="http://heartbleed.com">Heartbleed</a>, a trivial coding error
+              which has now been demonstrated to leak private keys. Previously been
+              subject to even worse bugs, like a
+              <a href="https://rhn.redhat.com/errata/RHSA-2010-0162.html"> 
+                remote code execution
+              </a> vulnerability.
+            </li>
+            <li>
+              <b>NSS:</b> The original transport encryption library which dates all
+              the way back to Netscape. Widely regarded by the security community as
+              an enormous stinking pile of poo with a byzantine API and surrealist
+              implementation. Was popped last year by a
+              <a href="https://www.redhat.com/archives/rhsa-announce/2013-December/msg00026.html">
+                remote code execution
+              </a> vulnerability.
+            </li>
+            <li>
+              <b>GnuTLS:</b> An alternative TLS library created by the GNU project.
+              Makes some moderate improvements in the space of TLS APIs, by decoupling
+              encryption from the I/O layer. Was recently popped by a
+              <a href="http://www.securityfocus.com/bid/65919">
+                certificate validation bug
+              </a>
+              and in 2008 was vulnerable to a
+              <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1948">
+                remote code execution
+              </a> vulnerability.
+            </li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
