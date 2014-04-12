@@ -77,9 +77,9 @@
             </li>
             <li>
               <b>NSS:</b> The original transport encryption library which dates all
-              the way back to Netscape. Widely regarded by the security community as
-              an enormous stinking pile of poo with a byzantine API and surrealist
-              implementation. Was popped last year by a
+              the way back to Netscape, used by Firefox. Widely regarded by the security
+              community as an enormous stinking pile of poo with a byzantine API and
+              surrealist implementation. Was popped in 2013 by a
               <a href="https://www.redhat.com/archives/rhsa-announce/2013-December/msg00026.html">
                 remote code execution
               </a> vulnerability.
@@ -95,6 +95,67 @@
               <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1948">
                 remote code execution
               </a> vulnerability.
+            </li>
+          </ul>
+        </p>
+        <p>
+          Heartbleed has received an awful lot of attention recently, described by
+          a certain prominent security researcher as
+          <a href="https://www.schneier.com/blog/archives/2014/04/heartbleed.html">
+            11 on a scale from 1 to 10
+          </a>.
+          Yet if we look back, we actually find worse vulnerabilities both in OpenSSL
+          and other major TLS implementations. We also find patterns of confusing
+          APIs, confusion around return values, and overall poor code quality. Here
+          is an example from the OpenSSL codebase:
+        </p>
+        <p>
+          <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054">
+            https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054
+          </a>
+          <pre>
+            int SSL_shutdown(SSL *s)
+                    {
+                    /* Note that this function behaves differently from what one might
+                     * expect.  Return values are 0 for no success (yet),
+                     * 1 for success; but calling it once is usually not enough,
+                     * even if blocking I/O is used (see ssl3_shutdown).
+                     */
+         </pre>
+        </p>
+        <p>
+          A similarly confusing API was implicated in the
+          <a href="https://www.gitorious.org/gnutls/gnutls/commit/6aa26f78150ccbdf0aec1878a41c17c41d358a3b">
+            recent GnuTLS certificate validation bug
+          </a> which was reminiscient of Apple's recent
+          <a href="https://gotofail.com/">goto fail</a> bug for bypassing TLS certificate validation.
+        </p>
+      </div>
+      <div class="container">
+        <h2>Can we do better?</h2>
+        <p class="callout">
+          <a href="https://twitter.com/RUST_HULK/status/453294938763976704">
+            <img src="/img/memorysafety.png">
+          </a>
+        </p>
+        <p>
+          The status quo does not instill confidence about the future security of the Internet.
+          We can also observe some common themes about the cause of the problems:
+        </p>
+        <p>
+          <ul>
+            <li>
+              <b>Lack of memory safety:</b> the remote code execution bugs prevalent throughout TLS stacks
+              and the recent Heartbleed bugs
+            </li>
+            <li>
+              <b>Confusing conventions:</b> when language conventions like returning 0 or -1 vs 1 or 0 to
+              indicate success or failure are used simultaneously, programmers can become confused as to
+              whether given operations are succeeding or failing, which has lead to bugs in practice.
+            </li>
+            <li>
+              <b>Confusing code:</b> The <i>goto fail</i> bug was caused by confusing language syntax,
+              namely the lack of braces in an if statement. Ideally this shouldn't be possible.
             </li>
           </ul>
         </p>

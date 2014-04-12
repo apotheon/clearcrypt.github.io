@@ -14,3 +14,8 @@ body {
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.callout {
+  text-align: center;
+  padding: 20px;
+}
