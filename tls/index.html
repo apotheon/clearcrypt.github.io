@@ -183,6 +183,13 @@
           safe systems programming like <a href="http://www.rust-lang.org/">Rust</a>, however this
           overlooks the fact that TLS is <i>black fucking magic</i> and producing a new, interoperable
           TLS implementation is an absurdly difficult undertaking.
+        </p>
+        <p>
+          Last, but not least, we might bring up the fact that "Transport Layer Encryption" doesn't
+          work on the OSI transport layer (layer 4), but in fact works on the session layer (layer 5)
+          and presentation layer (layer 6). Despite the fact SSL was renamed to TLS, when they did
+          the renaming they even got that wrong. TLS is <i>wrong at every level</i>
+        </p>
       </div>
     </div>
   </body>
