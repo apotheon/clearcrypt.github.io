@@ -172,7 +172,17 @@
             <img src="/img/weirdmachines.jpg">
           </a>
         </p>
-        </p>      
+        <p>
+          The complexities of the X.509 certificate format were recently illustrated by a paper on
+          <a href="https://www.cs.utexas.edu/~shmat/shmat_oak14.pdf">Frankencerts</a>, certificates
+          automatically assembled from fragments of other TLS certificates which exposed a number of
+          bugs in TLS certificate validation implementations across multiple stacks.
+        </p>
+        <p>
+          We could continue to embrace TLS and X.509, and create a new TLS implementation in a memory
+          safe systems programming like <a href="http://www.rust-lang.org/">Rust</a>, however this
+          overlooks the fact that TLS is <i>black fucking magic</i> and producing a new, interoperable
+          TLS implementation is an absurdly difficult undertaking.
       </div>
     </div>
   </body>
