@@ -21,7 +21,7 @@
         </p>
         <img src="/img/ripley.jpg"><br>
         <br>
-        <a href="mailto:clearcryptocode+subscribe@googlegroups.com" class="btn btn-success">Join Our Mailing List</a>
+        <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
       </div>
       <div class="container">
         <h2>Is Change Possible?</h2>
@@ -241,11 +241,69 @@
           This means that Tcpcrypt is not a proper TLS replacement, because a TLS replacement should
           make effors to ensure that you have the right key for the person or site that you intend to
           be talking to. While I applaud the efforts of Tcpcrypt, it's orthogonal to the TLS
-          replacement the world needs for secure encryption of sessions.
+          replacement the world needs for secure encryption of sessions. I hope
+          the developers of Tcpcrypt provide some way to hook into authenticated
+          key exchange protocols.
+        </p>
+      </div>
+      <div class="container">
+        <h2>Can we build a better CurveCP?</h2>
+        <p>
+          There are already many TCP-based variants of CurveCP, however they
+          all target particular use cases. The two most notable:
+        </p>
+        <ul>
+          <li>
+            <a href="http://curvezmq.org/">CurveZMQ</a>: CurveCP adapted to be the message
+            encryption format for the 0MQ brokerless messaging system. CurveZMQ also
+            specifies an <a href="http://hintjens.com/blog:62">SSH-inspired certificate
+            format</a> which is formally described by an ABNF grammar.
+          </li>
+          <li>
+            <a href="http://gonitro.io/">Nitro</a>: a messaging system similar to 0MQ which
+            uses a CurveCP inspired protocol atop TCP for encryption. Alas, they dropped
+            forward secrecy from the handshake, making it somewhat inferior to the CurveCP
+            and CurveZMQ (as well as TLS ECDHE) handshakes.
+          </li>
+        </ul>
+        <p>
+          Unfortunately, these are the two cloest things to a usable CurveCP
+          implementation, and they are special cased to messaging protocols.
+          This means these protocols can't provide the same sort of generalized
+          encryption for TCP streams that TLS provided.
         </p>
         <p>
-          <h2>Can we build a better CurveCP?</h2>
-          Yes?
+          CurveCP isn't the be-all and end-all of key agreement protocols either. There
+          are other places we can and should be looking:
+        </p>
+        <ul>
+          <li><a href="http://www.isg.rhul.ac.uk/~kp/ModularProofs.pdf">
+            Modular Security Proofs for Key Agreement
+          </a></li>
+          <li><a href="https://research.microsoft.com/en-us/um/people/klauter/security_of_kea_ake_protocol.pdf">
+            Security Analysis of KEA Authenticated Key Exchange Protocol
+          </a></li>
+          <li><a href="https://research.microsoft.com/pubs/81673/strongake-submitted.pdf">
+            Stronger Security of Authenticated Key Exchange
+          </a></li>
+          <li><a href="http://cacr.uwaterloo.ca/techreports/2011/cacr2011-11.pdf">
+            Anonymity and one-way authentication in key exchange protocols
+          </a></li>
+        </ul>
+      </div>
+      <div class="container">
+        <h2>So do we burn it all down and start over or not?</h2>
+        <p>
+          One way or another, we need encryption for TCP streams that we can trust.
+          A lot of work has gone into making TLS as successful as it is, and any
+          solution that seeks to replace it will likewise be a lot of work that
+          could just as well be spent trying to fix the problems with TLS.
+        </p>
+        <p>
+          Starting over or not is a difficult question. But it's one worth discussing.
+        </p>
+        <p>
+          <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
         </p>
       </div>
     </div>
