@@ -15,6 +15,10 @@ body {
   padding-bottom: 0;
 }
 
+.jumbotron .btn {
+  font-size: 28px;
+}
+
 .callout {
   text-align: center;
   padding: 20px;
