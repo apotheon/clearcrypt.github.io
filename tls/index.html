@@ -231,22 +231,18 @@
           but much more likely an intractable problem with trying to do bulk transfers with UDP.
           While djb has his heart in the right place, his vision of a DoS-proof UDP-based transport
           encryption protocol probably isn't a particularly practical one on the modern Internet.
-          It's our argument that a TLS replacement should likely be a TCP session encryption
-          protocol much like TLS itself.
         </p>
         <p>
-          Some work on encrypting TCP sessions directly is being developed by the
-          <a href="http://tcpcrypt.org/">Tcpcrypt</a> group, however they're developing tools for
-          <i>opportunistic encryption</i> which is not resilient to Man-in-the-Middle (MitM) attacks.
-          This means that Tcpcrypt is not a proper TLS replacement, because a TLS replacement should
-          make effors to ensure that you have the right key for the person or site that you intend to
-          be talking to. While we applaud the efforts of Tcpcrypt, it's orthogonal to the TLS
-          replacement the world needs for secure encryption of sessions. We hope
-          the developers of Tcpcrypt provide some way to hook into authenticated
-          key exchange protocols so Tcpcrypt can provide authenticated session
-          encryption too.
-        </p>
-      </div>
+          The newly formed <a href="http://tcpcrypt.org/">Tcpcrypt</a> group is
+          pursuing better approaches to encrypting TCP, suitable for encrypting
+          every TCP session. To accomplish this, they are pursuing
+          <i>opportunistic encryption</i> which is, by default, susceptible to
+          Man-in-the-Middle (MitM) attacks. However, Tcpcrypt can potentially
+          integrate with authenticated key exchange mechanisms, including TLS.
+          We wish the Tcpcrypt group the best of luck and hope they can
+          accomplish this audacious goal!
+        <p>
+     </div>
       <div class="container">
         <h2>Can we build a better CurveCP?</h2>
         <p>
@@ -304,7 +300,8 @@
           Starting over or not is a difficult question. But it's one worth discussing.
         </p>
         <p>
-          <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
+        <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
+        <a href="https://www.ietf.org/mailman/listinfo/tcpcrypt" class="btn btn-success">Join Tcpcrypt</a>
         </p>
       </div>
     </div>
