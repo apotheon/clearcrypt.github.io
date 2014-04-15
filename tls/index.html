@@ -99,6 +99,10 @@
                 remote code execution
               </a> vulnerability.
             </li>
+            <li>
+              <b>SecureTransport:</b> A TLS implementation most notable for being
+              written by Apple and <a href="https://gotofail.com/">goto fail</a>
+            </li>
           </ul>
         </p>
         <p>
@@ -156,9 +160,14 @@
               private keys and encrypted conversations.
             </li>
             <li>
-              <b>Confusing conventions:</b> when language conventions like returning 0 or -1 vs 1 or 0 to
-              indicate success or failure are used simultaneously, programmers can become confused as to
-              whether given operations are succeeding or failing, which has lead to bugs in practice.
+              <b>Confusing conventions (or lack thereof):</b> when language conventions
+              like returning a 0 or -1 vs 1 or 0 to indicate success or failure
+              are used simultaneously, programmers can become confused as to
+              whether given operations are succeeding or failing, which has lead
+              to bugs in practice such as the recent SecureTransport and GnuTLS
+              certificate validation vulnerabilities.
+              How can any reasonable security hardening take place in an
+              environment where people can't agree on whether 0 means success or failure?
             </li>
             <li>
               <b>Confusing code:</b> The <i>goto fail</i> bug was caused by confusing language syntax,
