@@ -237,18 +237,32 @@
         </p>
         <p>
           The newly formed <a href="http://tcpcrypt.org/">Tcpcrypt</a> group is
-          pursuing better approaches to encrypting TCP, suitable for encrypting
-          every TCP session. To accomplish this, they are pursuing
-          <i>opportunistic encryption</i> which is, by default, susceptible to
-          Man-in-the-Middle (MitM) attacks. However, Tcpcrypt can potentially
-          integrate with authenticated key exchange mechanisms, including TLS.
-          We wish the Tcpcrypt group the best of luck and hope they can
-          accomplish this audacious goal!
+          working on approaches to <i>actually</i> encrypt the transport layer
+          (i.e. layer 4) and, as much as possible, the network layer too.
+          They are also decoupling their efforts from key authentication
+          schemes, immediatel pursuing <i>opportunistic encryption</i> which is,
+          by default, susceptible to Man-in-the-Middle (MitM) attacks.
+        </p>
         <p>
-     </div>
+          However, Tcpcrypt is being designed so it can integrate with authenticated
+          key exchange mechanisms, including TLS. This provides a nice layering
+          of concerns: true transport layer encryption is decoupled from the way
+          in which keys are authenticated. It also prevents blankent
+          sureveillance without active MitM (although a likely outcome of
+          a widescale deployment would be nation state adversaries upping the
+          ante and performing more active MitM)
+        </p>
+        <p>
+          We wish the Tcpcrypt group the best of luck and hope they can
+          accomplish this audacious goal (seriously, not sarcastically)!
+          This seems like a great goal to pursue.
+        </p>
+      </div>
       <div class="container">
         <h2>Can we build a better CurveCP?</h2>
         <p>
+          CurveCP seems like a reasonable basis for a minimalistic transport
+          encryption protocol with forward secrecy.
           There are already many TCP-based variants of CurveCP, however they
           all target particular use cases. The two most notable:
         </p>
