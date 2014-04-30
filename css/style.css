@@ -145,6 +145,10 @@ body {
   color: rgba(255,255,255,.5);
 }
 
+pre {
+  font-size: 10px;
+}
+
 /*
  * Affix and center
  */
@@ -159,6 +163,9 @@ body {
   .mastfoot,
   .cover-container {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+  pre {
+    font-size: 13px;
   }
 }
 
