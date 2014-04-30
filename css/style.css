@@ -2,6 +2,10 @@ body {
   padding: 0 10% 0 10%;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   width: auto;
 }
