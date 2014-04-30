@@ -2,10 +2,6 @@
  * Globals
  */
 
-img {
-  max-width: 100%;
-}
-
 .main-content {
   text-align: left;
 }
@@ -13,6 +9,8 @@ img {
 .jumbotron {
   background-color: transparent;
   text-align: center;
+  max-width: 1170px;
+  margin: 0 auto;
 }
 
 .callout {
@@ -170,4 +168,8 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+img {
+  max-width: 100%;
 }
