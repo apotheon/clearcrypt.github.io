@@ -10,349 +10,361 @@
     <link rel="icon" href="/tls/favicon.ico">
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>TLS: The Nuclear Option</h1>
-        <p class="lead">
-          Transport Layer Security (TLS), previously known as the Secure
-          Sockets Layer (SSL), has been the de-facto solution for transport
-          encryption on the Internet for quite some time. Is it time for a
-          change?
-        </p>
-        <img src="/img/ripley.jpg"><br>
-        <br>
-        <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
+    <div class="site-wrapper">
+      <div class="masthead">
+        <div class="inner">
+          <h3 class="masthead-brand">ClearCrypt</h3>
+          <ul class="nav masthead-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/tls">The Problem</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="container">
-        <h2>Is Change Possible?</h2>
-        <p>
-          TLS has succeeded in becoming the universal transport encryption
-          protocol universally supported across multiple different operating
-          systems, language environments, and programs throughout the Internet.
-        </p>
-        <p>
-          If TLS has been such a success, why should we change? Is there a real,
-          legitimate need to start over from scratch, re-evaluate our principles,
-          and come up with a better plan in every regard to the protocol's design,
-          or should we try to fix TLS instead, identifying problems in the
-          protocol's design, attempting to fix them, and publishing new versions
-          of TLS with the changes?
-        </p>
-        <p>
-          If we're starting over, where do we stop? Is TLS flawed as a protocol?
-          What about X.509 certificates? Do those need to be replaced too?
-          Do we need ASN.1 to die in a fire? Should we try to start over fresh and
-          <a href="https://www.usenix.org/system/files/1403_02-08_mickens.pdf">
-            wash it all away?
-          </a>
-        </p>
-        <p>
-          We ask you to, for a brief moment, suspend any disbelief that TLS is
-          irreplacable and try to imagine a future where everyone's TCP sessions
-          are encrypted with a protocol better than TLS which uses a certificate
-          format better than X.509, a format that's simple, human readable, and
-          describable via a context-free grammar. We know we're talking ponies
-          and unicorns here, but is that really so bad?
-        </p>
-      </div>
-      <div class="container">
-        <h2>The Status Quo</h2>
-        Transport Layer Security is presently the foremost method of encryption used
-        on the Internet today, with multiple different implementations by different
-        vendors:
-        <p>
+      <div class="container main-content">
+
+        <div class="jumbotron">
+          <h1>TLS: The Nuclear Option</h1>
+          <p class="lead">
+            Transport Layer Security (TLS), previously known as the Secure
+            Sockets Layer (SSL), has been the de-facto solution for transport
+            encryption on the Internet for quite some time. Is it time for a
+            change?
+          </p>
+          <img src="/img/ripley.jpg"><br>
+          <br>
+          <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-default btn-lg">Join Our Mailing List</a>
+        </div>
+        <div class="container">
+          <h2>Is Change Possible?</h2>
+          <p>
+            TLS has succeeded in becoming the universal transport encryption
+            protocol universally supported across multiple different operating
+            systems, language environments, and programs throughout the Internet.
+          </p>
+          <p>
+            If TLS has been such a success, why should we change? Is there a real,
+            legitimate need to start over from scratch, re-evaluate our principles,
+            and come up with a better plan in every regard to the protocol's design,
+            or should we try to fix TLS instead, identifying problems in the
+            protocol's design, attempting to fix them, and publishing new versions
+            of TLS with the changes?
+          </p>
+          <p>
+            If we're starting over, where do we stop? Is TLS flawed as a protocol?
+            What about X.509 certificates? Do those need to be replaced too?
+            Do we need ASN.1 to die in a fire? Should we try to start over fresh and
+            <a href="https://www.usenix.org/system/files/1403_02-08_mickens.pdf">
+              wash it all away?
+            </a>
+          </p>
+          <p>
+            We ask you to, for a brief moment, suspend any disbelief that TLS is
+            irreplacable and try to imagine a future where everyone's TCP sessions
+            are encrypted with a protocol better than TLS which uses a certificate
+            format better than X.509, a format that's simple, human readable, and
+            describable via a context-free grammar. We know we're talking ponies
+            and unicorns here, but is that really so bad?
+          </p>
+        </div>
+        <div class="container">
+          <h2>The Status Quo</h2>
+          Transport Layer Security is presently the foremost method of encryption used
+          on the Internet today, with multiple different implementations by different
+          vendors:
+          <p>
+            <ul>
+              <li>
+                <b>OpenSSL:</b> The most popular TLS implementation, maintained by
+                Google security boffins Ben Laurie and Adam Langley who are doing
+                some pretty top notch work salvaging it. Widely regarded by the security
+                community as an enormous steaming pile of poo with a byzantine API
+                and surrealist implementation. Just got popped by
+                <a href="http://heartbleed.com">Heartbleed</a>, a trivial coding error
+                which has now been
+                <a href="http://www.engadget.com/2014/04/11/heartbleed-openssl-cloudflare-challenge/">
+                  shown to leak private keys.
+                </a>
+                Previously subject to even worse bugs, like a
+                <a href="https://rhn.redhat.com/errata/RHSA-2010-0162.html"> 
+                  remote code execution
+                </a> vulnerability.
+              </li>
+              <li>
+                <b>NSS:</b> The original transport encryption library which dates all
+                the way back to Netscape, used by Firefox. Widely regarded by the security
+                community as an enormous stinking pile of poo with a byzantine API and
+                surrealist implementation. Was popped in 2013 by a
+                <a href="https://www.redhat.com/archives/rhsa-announce/2013-December/msg00026.html">
+                  remote code execution
+                </a> vulnerability.
+              </li>
+              <li>
+                <b>GnuTLS:</b> An alternative TLS library created by the GNU project.
+                Makes some moderate improvements in the space of TLS APIs, by decoupling
+                encryption from the I/O layer. Was recently popped by a
+                <a href="http://www.securityfocus.com/bid/65919">
+                  certificate validation bug
+                </a>
+                and in 2008 was vulnerable to a
+                <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1948">
+                  remote code execution
+                </a> vulnerability.
+              </li>
+              <li>
+                <b>SecureTransport:</b> A TLS implementation most notable for being
+                written by Apple and <a href="https://gotofail.com/">goto fail</a>
+              </li>
+            </ul>
+          </p>
+          <p>
+            Heartbleed has received an awful lot of attention recently, described by
+            a certain prominent security researcher as
+            <a href="https://www.schneier.com/blog/archives/2014/04/heartbleed.html">
+              11 on a scale from 1 to 10.
+            </a>
+            Yet if we look back, we actually find worse vulnerabilities both in OpenSSL
+            and other major TLS implementations. We also find patterns of confusing
+            APIs, confusion around return values, and overall poor code quality. Here
+            is an example from the OpenSSL codebase:
+          </p>
+          <p>
+            <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054">
+              https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054
+            </a>
+            <pre>
+int SSL_shutdown(SSL *s)
+        {
+        /* Note that this function behaves differently from what one might
+         * expect.  Return values are 0 for no success (yet),
+         * 1 for success; but calling it once is usually not enough,
+         * even if blocking I/O is used (see ssl3_shutdown).
+         */
+           </pre>
+          </p>
+          <p>
+            Whaaaaaaaaaaaaaaaaaaaaa???
+          </p>
+          <p>
+            A similarly confusing API was implicated in the
+            <a href="https://www.gitorious.org/gnutls/gnutls/commit/6aa26f78150ccbdf0aec1878a41c17c41d358a3b">
+              recent GnuTLS certificate validation bug
+            </a> which was reminiscient of Apple's recent
+            <a href="https://gotofail.com/">goto fail</a> bug for bypassing TLS certificate validation.
+          </p>
+        </div>
+        <div class="container">
+          <h2>Is it really that bad?</h2>
+          <p class="callout">
+            <a href="https://twitter.com/RUST_HULK/status/453294938763976704">
+              <img src="/img/memorysafety.png">
+            </a>
+          </p>
+          <p>
+            The status quo does not instill confidence about the future security of the Internet.
+            We can also observe some common themes about the cause of the problems:
+          </p>
+          <p>
+            <ul>
+              <li>
+                <b>Lack of memory safety:</b> resulted in the remote code execution bugs prevalent
+                throughout multiple TLS stacks and the recent Heartbleed bugs which disclosed TLS
+                private keys and encrypted conversations.
+              </li>
+              <li>
+                <b>Confusing conventions (or lack thereof):</b> when language conventions
+                like returning a 0 or -1 vs 1 or 0 to indicate success or failure
+                are used simultaneously, programmers can become confused as to
+                whether given operations are succeeding or failing, which has lead
+                to bugs in practice such as the recent SecureTransport and GnuTLS
+                certificate validation vulnerabilities.
+                How can any reasonable security hardening take place in an
+                environment where people can't agree on whether 0 means success or failure?
+              </li>
+              <li>
+                <b>Confusing code:</b> The <i>goto fail</i> bug was caused by confusing language syntax,
+                namely the lack of braces in an if statement. Ideally this shouldn't be possible.
+              </li>
+            </ul>
+          </p>
+          <p>
+            We can note similar problems with the X.509 certificate format, which was was designed without
+            a proper understanding of the
+            <a href="http://www.cs.dartmouth.edu/~sergey/langsec/">
+              security applications of formal language theory
+            </a>
+            making the format difficult to work with:
+          </p>
+          <p class="callout">
+            <a href="http://langsec.org/occupy/">
+              <img src="/img/weirdmachines.jpg">
+            </a>
+          </p>
+          <p>
+            The complexities of the X.509 certificate format were recently illustrated by a paper on
+            <a href="https://www.cs.utexas.edu/~shmat/shmat_oak14.pdf">Frankencerts</a>, certificates
+            automatically assembled from fragments of other TLS certificates which exposed a number of
+            bugs in TLS certificate validation implementations across multiple stacks.
+          </p>
+          <p>
+            We could continue to embrace TLS and X.509, and create a new TLS implementation in a memory
+            safe systems programming like <a href="http://www.rust-lang.org/">Rust</a>, however this
+            overlooks the fact that TLS is <i>black fucking magic</i> and producing a new, interoperable
+            TLS implementation could only be done by wizards of such black magic. We would argue that it's
+            better to start over because TLS is a
+            <a href="http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/">
+              fractal of bad design.
+            </a>
+          </p>
+          <p>
+            Last, but not least, we might bring up the fact that "Transport Layer Encryption" doesn't
+            work on the OSI transport layer (layer 4), but in fact works on the session layer (layer 5)
+            and presentation layer (layer 6). Despite the fact SSL was renamed to TLS, when they did
+            the renaming they even got that wrong. TLS is <i>wrong at every level</i>.
+          </p>
+        </div>
+        <div class="container">
+          <h2>Sketches of a Better Future</h2>
+          <p>
+            Designing a new transport encryption protocol from scratch is an absurdly difficult undertaking.
+            It's possibly the hardest type of cryptographic protocol to design, and many attempts by amateurs
+            to design such a protocol immediately fall victim to a number of attacks, like replay attacks,
+            timing attacks, and various other information oracles like padding oracles. 
+          </p>
+          <p>
+            Let's say we want to throw the baby out with the bathwater in regard to TLS, but don't want to
+            start completely from scratch when designing a next generation transport encryption protocol.
+            Where should we look?
+          </p>
+          <p>
+            <a href="http://curvecp.org/">CurveCP</a>, designed by Daniel J. Bernstein (djb), provides a glimpse
+            into the future of transport protocols, as does the more recent
+            <a href="http://cr.yp.to/tcpip/minimalt-20130522.pdf">MinimaLT</a>. These protocols provide encrypted
+            transport atop the UDP protocol, in hopes of defeating <a href="http://curvecp.org/availability.html">
+            attacks on TCP's availability, by using things like RST packets.</a>
+          </p>
+          <p>
+            Unfortunately, the modern Internet does not look favorably upon UDP.
+            <a href="http://www.delaat.net/rp/2010-2011/p48/report.pdf">
+              Preliminary benchmarks of CurveCP showed nearly complete packet loss in the face of TCP congestion
+            </a>
+            which is arguably a problem with
+            <a href="http://curvecp.org/decongestion.html">
+              CurveCP's decongestion algorithm
+            </a>
+            but much more likely an intractable problem with trying to do bulk transfers with UDP.
+            While djb has his heart in the right place, his vision of a DoS-proof UDP-based transport
+            encryption protocol probably isn't a particularly practical one on the modern Internet.
+          </p>
+          <p>
+            The newly formed <a href="http://tcpcrypt.org/">Tcpcrypt</a> group is
+            working on approaches to <i>actually</i> encrypt the transport layer
+            (i.e. layer 4) and, as much as possible, the network layer too.
+            They are also decoupling their efforts from key authentication
+            schemes, immediately pursuing <i>opportunistic encryption</i> which is,
+            by default, susceptible to Man-in-the-Middle (MitM) attacks.
+          </p>
+          <p>
+            However, Tcpcrypt is being designed so it can integrate with authenticated
+            key exchange mechanisms, including TLS. This provides a nice layering
+            of concerns: true transport layer encryption is decoupled from the way
+            in which keys are authenticated. It also prevents blanket
+            sureveillance without active MitM (although a likely outcome of
+            a widescale deployment would be nation state adversaries upping the
+            ante and performing more active MitM)
+          </p>
+          <p>
+            We wish the Tcpcrypt group the best of luck and hope they can
+            accomplish this audacious goal (seriously, not sarcastically)!
+            This seems like a great goal to pursue.
+          </p>
+        </div>
+        <div class="container">
+          <h2>Can we build a better CurveCP?</h2>
+          <p class="callout"><img src="/img/aliens.jpg"></p>
+          <p>
+            CurveCP seems like a reasonable basis for a minimalistic transport
+            encryption protocol with forward secrecy.
+            There are already many TCP-based variants of CurveCP, however they
+            all target particular use cases. The two most notable:
+          </p>
           <ul>
             <li>
-              <b>OpenSSL:</b> The most popular TLS implementation, maintained by
-              Google security boffins Ben Laurie and Adam Langley who are doing
-              some pretty top notch work salvaging it. Widely regarded by the security
-              community as an enormous steaming pile of poo with a byzantine API
-              and surrealist implementation. Just got popped by
-              <a href="http://heartbleed.com">Heartbleed</a>, a trivial coding error
-              which has now been
-              <a href="http://www.engadget.com/2014/04/11/heartbleed-openssl-cloudflare-challenge/">
-                shown to leak private keys.
-              </a>
-              Previously subject to even worse bugs, like a
-              <a href="https://rhn.redhat.com/errata/RHSA-2010-0162.html"> 
-                remote code execution
-              </a> vulnerability.
+              <a href="http://curvezmq.org/">CurveZMQ</a>: CurveCP adapted to be the message
+              encryption format for the 0MQ brokerless messaging system. CurveZMQ also
+              specifies an <a href="http://hintjens.com/blog:62">SSH-inspired certificate
+              format</a> which is formally described by an ABNF grammar.
             </li>
             <li>
-              <b>NSS:</b> The original transport encryption library which dates all
-              the way back to Netscape, used by Firefox. Widely regarded by the security
-              community as an enormous stinking pile of poo with a byzantine API and
-              surrealist implementation. Was popped in 2013 by a
-              <a href="https://www.redhat.com/archives/rhsa-announce/2013-December/msg00026.html">
-                remote code execution
-              </a> vulnerability.
-            </li>
-            <li>
-              <b>GnuTLS:</b> An alternative TLS library created by the GNU project.
-              Makes some moderate improvements in the space of TLS APIs, by decoupling
-              encryption from the I/O layer. Was recently popped by a
-              <a href="http://www.securityfocus.com/bid/65919">
-                certificate validation bug
-              </a>
-              and in 2008 was vulnerable to a
-              <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-1948">
-                remote code execution
-              </a> vulnerability.
-            </li>
-            <li>
-              <b>SecureTransport:</b> A TLS implementation most notable for being
-              written by Apple and <a href="https://gotofail.com/">goto fail</a>
+              <a href="http://gonitro.io/">Nitro</a>: a messaging system similar to 0MQ which
+              uses a CurveCP inspired protocol atop TCP for encryption. Alas, they dropped
+              forward secrecy from the handshake, making it somewhat inferior to the CurveCP
+              and CurveZMQ (as well as TLS ECDHE) handshakes.
             </li>
           </ul>
-        </p>
-        <p>
-          Heartbleed has received an awful lot of attention recently, described by
-          a certain prominent security researcher as
-          <a href="https://www.schneier.com/blog/archives/2014/04/heartbleed.html">
-            11 on a scale from 1 to 10.
-          </a>
-          Yet if we look back, we actually find worse vulnerabilities both in OpenSSL
-          and other major TLS implementations. We also find patterns of confusing
-          APIs, confusion around return values, and overall poor code quality. Here
-          is an example from the OpenSSL codebase:
-        </p>
-        <p>
-          <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054">
-            https://github.com/openssl/openssl/blob/master/ssl/ssl_lib.c#L1054
-          </a>
-          <pre>
-            int SSL_shutdown(SSL *s)
-                    {
-                    /* Note that this function behaves differently from what one might
-                     * expect.  Return values are 0 for no success (yet),
-                     * 1 for success; but calling it once is usually not enough,
-                     * even if blocking I/O is used (see ssl3_shutdown).
-                     */
-         </pre>
-        </p>
-        <p>
-          Whaaaaaaaaaaaaaaaaaaaaa???
-        </p>
-        <p>
-          A similarly confusing API was implicated in the
-          <a href="https://www.gitorious.org/gnutls/gnutls/commit/6aa26f78150ccbdf0aec1878a41c17c41d358a3b">
-            recent GnuTLS certificate validation bug
-          </a> which was reminiscient of Apple's recent
-          <a href="https://gotofail.com/">goto fail</a> bug for bypassing TLS certificate validation.
-        </p>
-      </div>
-      <div class="container">
-        <h2>Is it really that bad?</h2>
-        <p class="callout">
-          <a href="https://twitter.com/RUST_HULK/status/453294938763976704">
-            <img src="/img/memorysafety.png">
-          </a>
-        </p>
-        <p>
-          The status quo does not instill confidence about the future security of the Internet.
-          We can also observe some common themes about the cause of the problems:
-        </p>
-        <p>
+          <p>
+            Unfortunately, these are the two cloest things to a usable CurveCP
+            implementation, and they are special cased to messaging protocols.
+            This means these protocols can't provide the same sort of generalized
+            encryption for TCP streams that TLS provided.
+          </p>
+          <p>
+            CurveCP isn't the be-all and end-all of key agreement protocols either. There
+            are other places we can and should be looking:
+          </p>
           <ul>
-            <li>
-              <b>Lack of memory safety:</b> resulted in the remote code execution bugs prevalent
-              throughout multiple TLS stacks and the recent Heartbleed bugs which disclosed TLS
-              private keys and encrypted conversations.
-            </li>
-            <li>
-              <b>Confusing conventions (or lack thereof):</b> when language conventions
-              like returning a 0 or -1 vs 1 or 0 to indicate success or failure
-              are used simultaneously, programmers can become confused as to
-              whether given operations are succeeding or failing, which has lead
-              to bugs in practice such as the recent SecureTransport and GnuTLS
-              certificate validation vulnerabilities.
-              How can any reasonable security hardening take place in an
-              environment where people can't agree on whether 0 means success or failure?
-            </li>
-            <li>
-              <b>Confusing code:</b> The <i>goto fail</i> bug was caused by confusing language syntax,
-              namely the lack of braces in an if statement. Ideally this shouldn't be possible.
-            </li>
+            <li><a href="http://www.isg.rhul.ac.uk/~kp/ModularProofs.pdf">
+              Modular Security Proofs for Key Agreement
+            </a></li>
+            <li><a href="https://research.microsoft.com/en-us/um/people/klauter/security_of_kea_ake_protocol.pdf">
+              Security Analysis of KEA Authenticated Key Exchange Protocol
+            </a></li>
+            <li><a href="https://research.microsoft.com/pubs/81673/strongake-submitted.pdf">
+              Stronger Security of Authenticated Key Exchange
+            </a></li>
+            <li><a href="http://cacr.uwaterloo.ca/techreports/2011/cacr2011-11.pdf">
+              Anonymity and one-way authentication in key exchange protocols
+            </a></li>
           </ul>
-        </p>
-        <p>
-          We can note similar problems with the X.509 certificate format, which was was designed without
-          a proper understanding of the
-          <a href="http://www.cs.dartmouth.edu/~sergey/langsec/">
-            security applications of formal language theory
-          </a>
-          making the format difficult to work with:
-        </p>
-        <p class="callout">
-          <a href="http://langsec.org/occupy/">
-            <img src="/img/weirdmachines.jpg">
-          </a>
-        </p>
-        <p>
-          The complexities of the X.509 certificate format were recently illustrated by a paper on
-          <a href="https://www.cs.utexas.edu/~shmat/shmat_oak14.pdf">Frankencerts</a>, certificates
-          automatically assembled from fragments of other TLS certificates which exposed a number of
-          bugs in TLS certificate validation implementations across multiple stacks.
-        </p>
-        <p>
-          We could continue to embrace TLS and X.509, and create a new TLS implementation in a memory
-          safe systems programming like <a href="http://www.rust-lang.org/">Rust</a>, however this
-          overlooks the fact that TLS is <i>black fucking magic</i> and producing a new, interoperable
-          TLS implementation could only be done by wizards of such black magic. We would argue that it's
-          better to start over because TLS is a
-          <a href="http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/">
-            fractal of bad design.
-          </a>
-        </p>
-        <p>
-          Last, but not least, we might bring up the fact that "Transport Layer Encryption" doesn't
-          work on the OSI transport layer (layer 4), but in fact works on the session layer (layer 5)
-          and presentation layer (layer 6). Despite the fact SSL was renamed to TLS, when they did
-          the renaming they even got that wrong. TLS is <i>wrong at every level</i>.
-        </p>
-      </div>
-      <div class="container">
-        <h2>Sketches of a Better Future</h2>
-        <p>
-          Designing a new transport encryption protocol from scratch is an absurdly difficult undertaking.
-          It's possibly the hardest type of cryptographic protocol to design, and many attempts by amateurs
-          to design such a protocol immediately fall victim to a number of attacks, like replay attacks,
-          timing attacks, and various other information oracles like padding oracles. 
-        </p>
-        <p>
-          Let's say we want to throw the baby out with the bathwater in regard to TLS, but don't want to
-          start completely from scratch when designing a next generation transport encryption protocol.
-          Where should we look?
-        </p>
-        <p>
-          <a href="http://curvecp.org/">CurveCP</a>, designed by Daniel J. Bernstein (djb), provides a glimpse
-          into the future of transport protocols, as does the more recent
-          <a href="http://cr.yp.to/tcpip/minimalt-20130522.pdf">MinimaLT</a>. These protocols provide encrypted
-          transport atop the UDP protocol, in hopes of defeating <a href="http://curvecp.org/availability.html">
-          attacks on TCP's availability, by using things like RST packets.</a>
-        </p>
-        <p>
-          Unfortunately, the modern Internet does not look favorably upon UDP.
-          <a href="http://www.delaat.net/rp/2010-2011/p48/report.pdf">
-            Preliminary benchmarks of CurveCP showed nearly complete packet loss in the face of TCP congestion
-          </a>
-          which is arguably a problem with
-          <a href="http://curvecp.org/decongestion.html">
-            CurveCP's decongestion algorithm
-          </a>
-          but much more likely an intractable problem with trying to do bulk transfers with UDP.
-          While djb has his heart in the right place, his vision of a DoS-proof UDP-based transport
-          encryption protocol probably isn't a particularly practical one on the modern Internet.
-        </p>
-        <p>
-          The newly formed <a href="http://tcpcrypt.org/">Tcpcrypt</a> group is
-          working on approaches to <i>actually</i> encrypt the transport layer
-          (i.e. layer 4) and, as much as possible, the network layer too.
-          They are also decoupling their efforts from key authentication
-          schemes, immediately pursuing <i>opportunistic encryption</i> which is,
-          by default, susceptible to Man-in-the-Middle (MitM) attacks.
-        </p>
-        <p>
-          However, Tcpcrypt is being designed so it can integrate with authenticated
-          key exchange mechanisms, including TLS. This provides a nice layering
-          of concerns: true transport layer encryption is decoupled from the way
-          in which keys are authenticated. It also prevents blanket
-          sureveillance without active MitM (although a likely outcome of
-          a widescale deployment would be nation state adversaries upping the
-          ante and performing more active MitM)
-        </p>
-        <p>
-          We wish the Tcpcrypt group the best of luck and hope they can
-          accomplish this audacious goal (seriously, not sarcastically)!
-          This seems like a great goal to pursue.
-        </p>
-      </div>
-      <div class="container">
-        <h2>Can we build a better CurveCP?</h2>
-        <p class="callout"><img src="/img/aliens.jpg"></p>
-        <p>
-          CurveCP seems like a reasonable basis for a minimalistic transport
-          encryption protocol with forward secrecy.
-          There are already many TCP-based variants of CurveCP, however they
-          all target particular use cases. The two most notable:
-        </p>
-        <ul>
-          <li>
-            <a href="http://curvezmq.org/">CurveZMQ</a>: CurveCP adapted to be the message
-            encryption format for the 0MQ brokerless messaging system. CurveZMQ also
-            specifies an <a href="http://hintjens.com/blog:62">SSH-inspired certificate
-            format</a> which is formally described by an ABNF grammar.
-          </li>
-          <li>
-            <a href="http://gonitro.io/">Nitro</a>: a messaging system similar to 0MQ which
-            uses a CurveCP inspired protocol atop TCP for encryption. Alas, they dropped
-            forward secrecy from the handshake, making it somewhat inferior to the CurveCP
-            and CurveZMQ (as well as TLS ECDHE) handshakes.
-          </li>
-        </ul>
-        <p>
-          Unfortunately, these are the two cloest things to a usable CurveCP
-          implementation, and they are special cased to messaging protocols.
-          This means these protocols can't provide the same sort of generalized
-          encryption for TCP streams that TLS provided.
-        </p>
-        <p>
-          CurveCP isn't the be-all and end-all of key agreement protocols either. There
-          are other places we can and should be looking:
-        </p>
-        <ul>
-          <li><a href="http://www.isg.rhul.ac.uk/~kp/ModularProofs.pdf">
-            Modular Security Proofs for Key Agreement
-          </a></li>
-          <li><a href="https://research.microsoft.com/en-us/um/people/klauter/security_of_kea_ake_protocol.pdf">
-            Security Analysis of KEA Authenticated Key Exchange Protocol
-          </a></li>
-          <li><a href="https://research.microsoft.com/pubs/81673/strongake-submitted.pdf">
-            Stronger Security of Authenticated Key Exchange
-          </a></li>
-          <li><a href="http://cacr.uwaterloo.ca/techreports/2011/cacr2011-11.pdf">
-            Anonymity and one-way authentication in key exchange protocols
-          </a></li>
-        </ul>
-      </div>
-      <div class="container">
-        <h2>Can we make a better certificate format?</h2>
-        <p>
-          X.509. ASN.1. I'm sure just by saying that some of you are ready to
-          to claw your own eyeballs out.
-        </p>
-        <p>
-          Is it so much to ask for certificates to be human-readable? If there
-          were, would there other potential benefits? What if certificates were
-          described in terms of context free grammars instead of a byzantine
-          binary code with a proliferation of formats and "weird machine"
-          parsing properties? Could we make a more LANGSEC friendly certificate
-          format that would simultaneously make certificates easier to reason
-          about?
-        </p>
-        <p>
-          Perhaps we could dig through the history of Internet standards and
-          examine such crazy things as HTTP, MIME, and URIs as ways of
-          representing resources and messages, and deviate away from the
-          "certificate is an opaque blob until I run it through openssl x509"
-          approach to figuring out what's going on.
-        </p>
-      </div>
-      <div class="container">
-        <h2>So do we burn it all down and start over or not?</h2>
-        <p>
-          One way or another, we need encryption for TCP streams that we can trust.
-          A lot of work has gone into making TLS as successful as it is, and any
-          solution that seeks to replace it will likewise be a lot of work that
-          could just as well be spent trying to fix the problems with TLS.
-        </p>
-        <p>
-          Starting over or not is a difficult question. But it's one worth discussing.
-        </p>
-        <p>
-        <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-success">Join Our Mailing List</a>
-        <a href="https://www.ietf.org/mailman/listinfo/tcpcrypt" class="btn btn-success">Join Tcpcrypt Mailing List</a>
-        </p>
+        </div>
+        <div class="container">
+          <h2>Can we make a better certificate format?</h2>
+          <p>
+            X.509. ASN.1. I'm sure just by saying that some of you are ready to
+            to claw your own eyeballs out.
+          </p>
+          <p>
+            Is it so much to ask for certificates to be human-readable? If there
+            were, would there other potential benefits? What if certificates were
+            described in terms of context free grammars instead of a byzantine
+            binary code with a proliferation of formats and "weird machine"
+            parsing properties? Could we make a more LANGSEC friendly certificate
+            format that would simultaneously make certificates easier to reason
+            about?
+          </p>
+          <p>
+            Perhaps we could dig through the history of Internet standards and
+            examine such crazy things as HTTP, MIME, and URIs as ways of
+            representing resources and messages, and deviate away from the
+            "certificate is an opaque blob until I run it through openssl x509"
+            approach to figuring out what's going on.
+          </p>
+        </div>
+        <div class="container">
+          <h2>So do we burn it all down and start over or not?</h2>
+          <p>
+            One way or another, we need encryption for TCP streams that we can trust.
+            A lot of work has gone into making TLS as successful as it is, and any
+            solution that seeks to replace it will likewise be a lot of work that
+            could just as well be spent trying to fix the problems with TLS.
+          </p>
+          <p>
+            Starting over or not is a difficult question. But it's one worth discussing.
+          </p>
+          <p>
+          <a href="mailto:clearcryptocode+subscribe@googlegroups.com?subject=subscribe" class="btn btn-default">Join Our Mailing List</a>
+          <a href="https://www.ietf.org/mailman/listinfo/tcpcrypt" class="btn btn-default">Join Tcpcrypt Mailing List</a>
+          </p>
+        </div>
       </div>
     </div>
   </body>
