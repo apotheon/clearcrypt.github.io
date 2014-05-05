@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
 .btn-lg {
   height: 50px;
   line-height: 1.5;
