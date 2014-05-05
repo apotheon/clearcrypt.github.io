@@ -6,6 +6,17 @@ body {
   margin: 0;
 }
 
+.btn-lg {
+  height: 50px;
+  line-height: 1.5;
+}
+
+.octocat {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
 /*
  * Affix and center
  */
